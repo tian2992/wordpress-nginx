@@ -15,7 +15,7 @@ Looking for a modern hosting environment provisioned using Ansible? Check out [W
 
 ### PHP configuration
 
-The php-fpm pool configuration is located in `global/php-pool.conf` and defaults PHP 7.1.  It will need modified if your php-fpm pool service is running in a different location or is a different PHP version.
+The php-fpm pool configuration is located in `global/php-pool.conf` and defaults to PHP 7.1.  It will need modified if your php-fpm pool service is running in a different location or is a different PHP version.
 
 ### Site configuration
 
