@@ -49,7 +49,14 @@ server {
 	listen [::]:80;
 	server_name ssl.com www.ssl.com;
 
-	return 301 https://ssl.com$request_uri;
+	location /.well-known/acme-challenge {
+        root /sites/ssl.com/public;
+        try_files $uri $uri/ =404;
+    }
+
+	location / {
+        rewrite ^ https://ssl.com$request_uri? permanent;
+    }
 }
 
 # Redirect www to non-www
