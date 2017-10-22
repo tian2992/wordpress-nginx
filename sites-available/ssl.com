@@ -10,8 +10,8 @@ server {
 	root /sites/ssl.com/public;
 
 	# Paths to certificate files.
-    ssl_certificate /etc/letsencrypt/live/ssl.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/ssl.com/privkey.pem;
+	ssl_certificate /etc/letsencrypt/live/ssl.com/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/ssl.com/privkey.pem;
 
 	# File to be used as index
 	index index.php;
@@ -49,14 +49,7 @@ server {
 	listen [::]:80;
 	server_name ssl.com www.ssl.com;
 
-	location /.well-known/acme-challenge {
-        root /sites/ssl.com/public;
-        try_files $uri $uri/ =404;
-    }
-
-	location / {
-        rewrite ^ https://ssl.com$request_uri? permanent;
-    }
+	return 301 https://ssl.com$request_uri;
 }
 
 # Redirect www to non-www
