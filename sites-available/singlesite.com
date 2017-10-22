@@ -20,7 +20,7 @@ server {
 	include global/server/defaults.conf;
 
 	# LetsEncrypt acme-challenge
-	location ^~ /\.well-known/acme-challenge {
+	location ^~ /.well-known/acme-challenge {
         root /sites/letsencrypt/public;
         try_files $uri $uri/ =404;
     }
