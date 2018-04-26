@@ -11,10 +11,14 @@ server {
 
 	# File to be used as index
 	index index.php;
+	
+	#send logs to global aggregate logs
+	error_log /var/log/nginx/error.log warn;
+	access_log /var/log/nginx/access.log;
 
-	# Overrides logs defined in nginx.conf, allows per site logs.
-	access_log /sites/multisite-subdirectory.com/logs/access.log;
-	error_log /sites/multisite-subdirectory.com/logs/error.log;
+	# Site specific logs.
+	access_log /sites/singlesite.com/logs/access.log;
+	error_log /sites/singlesite.com/logs/error.log;
 
 	# Default server block rules
 	include global/server/defaults.conf;
