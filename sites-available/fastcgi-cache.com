@@ -22,8 +22,8 @@ server {
 	access_log /var/log/nginx/access.log;
 
 	# Site specific logs.
-	access_log /sites/singlesite.com/logs/access.log;
-	error_log /sites/singlesite.com/logs/error.log;
+	access_log /sites/fastcgi-cache.com/logs/access.log;
+	error_log /sites/fastcgi-cache.com/logs/error.log;
 
 	# Default server block rules
 	include global/server/defaults.conf;
