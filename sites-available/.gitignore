@@ -10,3 +10,5 @@
 !singlesite.com
 !ssl.com
 !ssl-fastcgi-cache.com
+!ssl-multisite-subdirectory.com
+!ssl-multisite-subdomain.com
