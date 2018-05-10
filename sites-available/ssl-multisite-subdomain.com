@@ -15,7 +15,7 @@ server {
 
     # File to be used as index
     index index.php;
-    
+
     #send logs to global aggregate logs
     error_log /var/log/nginx/error.log warn;
     access_log /var/log/nginx/access.log;
@@ -29,6 +29,12 @@ server {
 
     # SSL rules
     include global/server/ssl.conf;
+
+    # LetsEncrypt acme-challenge (need to keep for renewals)
+    location ^~ /.well-known/acme-challenge {
+        root /sites/letsencrypt/public;
+        try_files $uri $uri/ =404;
+    }
 
     location / {
         try_files $uri $uri/ /index.php?$args;
