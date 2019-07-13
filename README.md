@@ -8,12 +8,15 @@ This repository contains the Nginx configurations used within the series [Hostin
 * ssl-fastcgi-cache.com - WordPress on HTTPS with FastCGI caching
 * multisite-subdomain.com - WordPress Multisite install using subdomains
 * multisite-subdirectory.com - WordPress Multisite install using subdirectories
+* ssl-multisite-subdomain.com - WordPress Multisite install using subdomains on HTTPS
+* ssl-multisite-subdirectory.com - WordPress Multisite install using subdirectories on HTTPS
 
 Looking for a modern hosting environment provisioned using Ansible? Check out [WordPress Ansible](https://github.com/A5hleyRich/wordpress-ansible).
 
 ## Usage
 
 ### PHP configuration
+
 
 The php-fpm pool configuration is located in `global/php-pool.conf` and defaults to PHP 7.1.  It will need modified if you want the default php-fpm pool service to be a different PHP version.  Additional PHP version upstream definitions can be added to the `/upstreams` folder (a PHP 7.0 sample is provided there).  You can either use the default pool using `$upstream` in your nginx configurations or the specific upstream definition (i.e. php71, php70) setup by your custom upstream definitions.
 

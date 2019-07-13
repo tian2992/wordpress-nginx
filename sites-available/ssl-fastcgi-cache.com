@@ -21,7 +21,11 @@ server {
 	# File to be used as index
 	index index.php;
 
-	# Overrides logs defined in nginx.conf, allows per site logs.
+	#send logs to global aggregate logs
+	error_log /var/log/nginx/error.log warn;
+	access_log /var/log/nginx/access.log;
+
+	# Site specific logs.
 	access_log /sites/ssl-fastcgi-cache.com/logs/access.log;
 	error_log /sites/ssl-fastcgi-cache.com/logs/error.log;
 
@@ -72,7 +76,14 @@ server {
 	listen [::]:80;
 	server_name ssl-fastcgi-cache.com www.ssl-fastcgi-cache.com;
 
-	return 301 https://ssl-fastcgi-cache.com$request_uri;
+	location /.well-known/acme-challenge {
+        root /sites/ssl.com/public;
+        try_files $uri $uri/ =404;
+    }
+
+    location / {
+        rewrite ^ https://ssl-fastcgi-cache.com$request_uri? permanent;
+    }
 }
 
 # Redirect www to non-www
